@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon's Computer Repair | Springville, AL</title>
+    <meta name="description" content="Professional computer repair in Springville, Alabama. Virus removal, hardware repair, data recovery, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark:   #1a3a2a;
+            --green-mid:    #1f4d35;
+            --green-light:  #2a6347;
+            --green-hover:  #245c3f;
+            --tan:          #d4b896;
+            --tan-light:    #e8d5be;
+            --tan-pale:     #f5ede0;
+            --tan-bg:       #faf6f0;
+            --text-dark:    #1a3a2a;
+            --text-mid:     #3a5a4a;
+            --text-light:   #6a8a7a;
+            --border:       #d8c9b5;
+            --white:        #ffffff;
+            --shadow-sm:    0 1px 3px rgba(26,58,42,0.08);
+            --shadow-md:    0 4px 20px rgba(26,58,42,0.1);
+            --shadow-lg:    0 12px 40px rgba(26,58,42,0.14);
+            --font-main:    'Plus Jakarta Sans', -apple-system, sans-serif;
+            --max-width:    1120px;
+            --radius:       12px;
+            --radius-sm:    8px;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
+        body { font-family:var(--font-main); color:var(--text-dark); background:var(--white); line-height:1.6; overflow-x:hidden; }
+        img { max-width:100%; display:block; }
+        a { text-decoration:none; color:inherit; }
+
+        .container { max-width:var(--max-width); margin:0 auto; padding:0 24px; }
+        .section-label { font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-light); margin-bottom:12px; }
+        .section-title { font-size:clamp(28px,5vw,42px); font-weight:700; line-height:1.15; color:var(--text-dark); margin-bottom:16px; }
+        .section-subtitle { font-size:17px; color:var(--text-mid); max-width:560px; line-height:1.7; }
+
+        .fade-up { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* NAV */
+        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(250,246,240,0.92); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); transition:box-shadow 0.3s; }
+        .nav.scrolled { box-shadow:var(--shadow-sm); }
+        .nav-inner { max-width:var(--max-width); margin:0 auto; padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; }
+        .nav-brand { font-size:17px; font-weight:700; color:var(--text-dark); display:flex; align-items:center; gap:10px; }
+        .nav-brand svg { width:28px; height:28px; color:var(--green-light); }
+        .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+        .nav-links a { font-size:14px; font-weight:500; color:var(--text-mid); transition:color 0.2s; }
+        .nav-links a:hover { color:var(--text-dark); }
+        .nav-cta { background:var(--green-mid) !important; color:var(--tan-light) !important; padding:9px 20px; border-radius:100px; font-size:14px; font-weight:600; transition:background 0.2s,transform 0.15s; }
+        .nav-cta:hover { background:var(--green-hover) !important; transform:scale(1.03); }
+        .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; padding:8px; color:var(--text-dark); }
+
+        /* HERO */
+        .hero { padding:140px 0 100px; text-align:center; position:relative; overflow:hidden; background:var(--tan-bg); }
+        .hero::before { content:''; position:absolute; top:-40%; left:50%; transform:translateX(-50%); width:800px; height:800px; background:radial-gradient(circle,rgba(42,99,71,0.07) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
+        .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(42,99,71,0.1); border:1px solid rgba(42,99,71,0.2); padding:8px 18px; border-radius:100px; font-size:13px; font-weight:600; color:var(--green-light); margin-bottom:28px; }
+        .hero-badge svg { width:14px; height:14px; }
+        .hero h1 { font-size:clamp(36px,7vw,64px); font-weight:700; line-height:1.08; letter-spacing:-1.5px; color:var(--text-dark); margin-bottom:20px; max-width:720px; margin-left:auto; margin-right:auto; }
+        .hero p { font-size:18px; color:var(--text-mid); max-width:500px; margin:0 auto 40px; line-height:1.7; }
+        .hero-actions { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
+
+        .btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-main); font-size:16px; font-weight:600; padding:14px 28px; border-radius:100px; border:none; cursor:pointer; transition:all 0.2s ease; }
+        .btn svg { width:18px; height:18px; }
+        .btn-primary { background:var(--green-mid); color:var(--tan-light); box-shadow:0 4px 16px rgba(31,77,53,0.3); }
+        .btn-primary:hover { background:var(--green-hover); transform:translateY(-1px); box-shadow:0 6px 24px rgba(31,77,53,0.35); }
+        .btn-secondary { background:var(--white); color:var(--text-dark); border:1.5px solid var(--border); }
+        .btn-secondary:hover { border-color:var(--tan); background:var(--tan-bg); }
+
+        .hero-trust { margin-top:56px; display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap; }
+        .hero-trust-item { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text-light); font-weight:500; }
+        .hero-trust-item svg { width:18px; height:18px; color:var(--green-light); }
+
+        /* SERVICES */
+        .services { padding:100px 0; background:var(--white); }
+        .services-header { text-align:center; margin-bottom:56px; }
+        .services-header .section-subtitle { margin:0 auto; }
+        .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+        .service-card { background:var(--tan-bg); border:1px solid var(--border); border-radius:var(--radius); padding:36px 28px; transition:all 0.3s; position:relative; overflow:hidden; }
+        .service-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--green-light); transform:scaleX(0); transition:transform 0.3s; }
+        .service-card:hover { border-color:rgba(42,99,71,0.3); box-shadow:var(--shadow-md); transform:translateY(-2px); }
+        .service-card:hover::after { transform:scaleX(1); }
+        .service-icon { width:48px; height:48px; background:rgba(42,99,71,0.1); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; margin-bottom:20px; color:var(--green-light); }
+        .service-icon svg { width:24px; height:24px; }
+        .service-card h3 { font-size:17px; font-weight:600; margin-bottom:10px; color:var(--text-dark); }
+        .service-card p { font-size:14px; color:var(--text-mid); line-height:1.65; }
+        .service-price { display:inline-block; margin:10px 0 8px; font-size:15px; font-weight:700; color:var(--green-light); background:rgba(42,99,71,0.1); padding:3px 12px; border-radius:100px; }
+
+        /* HOW IT WORKS */
+        .how-it-works { padding:100px 0; background:var(--tan-bg); }
+        .how-header { text-align:center; margin-bottom:64px; }
+        .how-header .section-subtitle { margin:0 auto; }
+        .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; position:relative; }
+        .steps::before { content:''; position:absolute; top:36px; left:16%; right:16%; height:2px; background:linear-gradient(90deg,var(--green-light),var(--border),var(--green-light)); opacity:0.3; }
+        .step { text-align:center; }
+        .step-number { width:72px; height:72px; border-radius:50%; background:var(--white); border:2px solid var(--green-light); display:flex; align-items:center; justify-content:center; margin:0 auto 24px; font-size:26px; font-weight:700; color:var(--green-light); position:relative; z-index:1; }
+        .step h3 { font-size:18px; font-weight:600; margin-bottom:10px; color:var(--text-dark); }
+        .step p { font-size:15px; color:var(--text-mid); max-width:280px; margin:0 auto; line-height:1.65; }
+
+        /* ABOUT */
+        .about { padding:100px 0; background:var(--white); }
+        .about-content { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+        .about-text .section-subtitle { margin-bottom:24px; }
+        .about-text p { font-size:16px; color:var(--text-mid); line-height:1.75; margin-bottom:16px; }
+        .about-stats { display:flex; gap:32px; margin-top:32px; padding-top:32px; border-top:1px solid var(--border); }
+        .about-stat-number { font-size:32px; font-weight:700; color:var(--green-light); line-height:1; }
+        .about-stat-label { font-size:13px; color:var(--text-light); margin-top:6px; font-weight:500; }
+        .logo-card { background:var(--green-dark); border-radius:var(--radius); padding:48px 36px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:360px; position:relative; overflow:hidden; }
+        .logo-card::before { content:''; position:absolute; width:300px; height:300px; background:radial-gradient(circle,rgba(212,184,150,0.08) 0%,transparent 70%); top:-50px; right:-50px; border-radius:50%; }
+        .logo-svg-wrap { width:100%; max-width:320px; }
+        .logo-svg-wrap svg { width:100%; height:auto; }
+
+        /* CONTACT */
+        .contact { padding:100px 0; background:var(--tan-bg); }
+        .contact-layout { max-width:600px; }
+        .contact-info h2 { font-size:clamp(28px,4vw,38px); font-weight:700; line-height:1.15; margin-bottom:16px; color:var(--text-dark); }
+        .contact-info > p { font-size:16px; color:var(--text-mid); line-height:1.7; margin-bottom:40px; }
+        .contact-detail { display:flex; align-items:flex-start; gap:16px; margin-bottom:28px; }
+        .contact-detail-icon { width:44px; height:44px; background:rgba(42,99,71,0.1); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:var(--green-light); flex-shrink:0; }
+        .contact-detail-icon svg { width:20px; height:20px; }
+        .contact-detail h4 { font-size:14px; font-weight:600; margin-bottom:2px; color:var(--text-dark); }
+        .contact-detail p { font-size:14px; color:var(--text-mid); }
+        .contact-detail a { color:var(--green-light); font-weight:500; }
+
+        /* FOOTER */
+        .footer { background:var(--green-dark); padding:56px 0 32px; color:rgba(212,184,150,0.7); }
+        .footer-content { display:flex; justify-content:space-between; align-items:start; flex-wrap:wrap; gap:40px; margin-bottom:40px; }
+        .footer-brand h3 { font-size:18px; font-weight:700; color:var(--tan-light); margin-bottom:8px; }
+        .footer-brand p { font-size:14px; max-width:300px; line-height:1.65; }
+        .footer-links h4 { font-size:13px; font-weight:600; color:var(--tan-light); text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+        .footer-links ul { list-style:none; }
+        .footer-links li { margin-bottom:10px; }
+        .footer-links a { font-size:14px; color:rgba(212,184,150,0.6); transition:color 0.2s; }
+        .footer-links a:hover { color:var(--tan-light); }
+        .footer-bottom { border-top:1px solid rgba(212,184,150,0.15); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:13px; color:rgba(212,184,150,0.4); }
+
+        @media(max-width:768px){
+            .nav-links { display:none; position:absolute; top:64px; left:0; right:0; background:rgba(250,246,240,0.98); backdrop-filter:blur(20px); flex-direction:column; padding:20px 24px; gap:16px; border-bottom:1px solid var(--border); }
+            .nav-links.open { display:flex; }
+            .nav-mobile-toggle { display:block; }
+            .hero { padding:120px 0 72px; }
+            .hero-trust { flex-direction:column; gap:16px; }
+            .steps { grid-template-columns:1fr; gap:32px; }
+            .steps::before { display:none; }
+            .about-content { grid-template-columns:1fr; gap:40px; }
+            .logo-card { order:-1; min-height:280px; }
+            .footer-content { flex-direction:column; }
+        }
+        @media(max-width:480px){
+            .hero-actions { flex-direction:column; width:100%; }
+            .hero-actions .btn { width:100%; justify-content:center; }
+            .services-grid { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Brandon's Computer Repair
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Trusted in Springville, AL
+            </div>
+            <h1>Computer problems?<br>Consider them fixed.</h1>
+            <p>Professional computer repair you can count on. Drop off your device and I'll handle the rest.</p>
+            <div class="hero-actions">
+                <a href="tel:+12058554802" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Call Now
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Get In Touch
+                </a>
+            </div>
+            <div class="hero-trust">
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Locally Owned &amp; Operated
+                </div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Fast Turnaround
+                </div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    Fair, Honest Pricing
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header fade-up">
+                <p class="section-label">Services</p>
+                <h2 class="section-title">Everything your computer needs</h2>
+                <p class="section-subtitle">From quick fixes to complex repairs, your device is in good hands.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-up">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+                    <h3>General Repairs</h3>
+                    <div class="service-price">$50–$100+</div>
+                    <p>From sluggish performance to boot failures and software conflicts, I diagnose the problem and get your machine running the way it should.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Virus &amp; Malware Removal</h3>
+                    <div class="service-price">$40–$60</div>
+                    <p>A thorough system scan, complete cleanup, and performance optimization — I'll make sure your computer is safe, clean, and running at its best.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <h3>Operating System Reinstall</h3>
+                    <div class="service-price">$50–$75</div>
+                    <p>A fresh start when you need it most. Includes driver installation, system updates, and basic software setup so your device is ready to go from day one.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                    <h3>RAM or SSD Upgrade</h3>
+                    <div class="service-price">$50–$100</div>
+                    <p>Give your computer a meaningful speed boost. I handle installation, configuration, and data cloning so the transition is seamless and nothing gets left behind.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg></div>
+                    <h3>Laptop Cleaning &amp; Cooling Tune-Up</h3>
+                    <div class="service-price">$45–$60</div>
+                    <p>Dust and debris are silent killers for laptops. I clean the fan and internal components to restore proper airflow, reduce heat, and extend the life of your device.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><line x1="2" y1="10" x2="5" y2="10"/><line x1="19" y1="10" x2="22" y2="10"/></svg></div>
+                    <h3>Console Cleaning</h3>
+                    <div class="service-price">$45–$55</div>
+                    <p>Keep your console performing at its peak. I clean the fan and internal parts to improve airflow, prevent overheating, and restore smooth, reliable system function.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="how-header fade-up">
+                <p class="section-label">How It Works</p>
+                <h2 class="section-title">Simple as 1, 2, 3</h2>
+                <p class="section-subtitle">Getting your computer fixed shouldn't be complicated. Here's how it works.</p>
+            </div>
+            <div class="steps">
+                <div class="step fade-up">
+                    <div class="step-number">1</div>
+                    <h3>Call or Get In Touch</h3>
+                    <p>Give me a call or shoot me an email. Tell me what's going on and I'll take it from there.</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-number">2</div>
+                    <h3>Drop Off Your Device</h3>
+                    <p>Bring your computer to me. I'll diagnose the issue and give you an honest estimate before any work begins.</p>
+                </div>
+                <div class="step fade-up">
+                    <div class="step-number">3</div>
+                    <h3>Pick It Up, Good as New</h3>
+                    <p>I'll fix it right and let you know when it's ready. Pick up your device and get back to business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-up">
+                    <p class="section-label">About</p>
+                    <h2 class="section-title">Your local tech expert</h2>
+                    <p><strong>A.A.S in Cybersecurity | Network+ Certified | Security+ Certified | TCM Security Help Desk Certified</strong></p>
+                    <p>I'm Brandon, and after seven years in healthcare, I made the leap into IT in 2022 to pursue my lifelong passion for computers. What started as a hobby — taking things apart and putting them back together — became a career.</p>
+                    <p>Since transitioning, I've earned an A.A.S. in Computer Information Systems with a focus on Cybersecurity and achieved Network+ and Security+ certifications. My healthcare background taught me precision, patience, and the importance of helping people — skills I bring to every repair.</p>
+                    <p>I specialize in diagnosing hardware issues, optimizing system performance, and helping clients extend the life of their devices. Whether I'm troubleshooting a boot error or recovering lost data, I bring technical know-how and genuine care to every job.</p>
+                    <p>When I'm not working on computers, you'll find me outdoors — fishing, kayaking, hunting, or on the golf course. Roll Tide!</p>
+                    <div class="about-stats">
+                        <div class="about-stat"><div class="about-stat-number">100%</div><div class="about-stat-label">Satisfaction Focus</div></div>
+                        <div class="about-stat"><div class="about-stat-number">Local</div><div class="about-stat-label">Springville, AL</div></div>
+                        <div class="about-stat"><div class="about-stat-number">Fair</div><div class="about-stat-label">Honest Pricing</div></div>
+                    </div>
+                </div>
+                <div class="logo-card fade-up">
+                    <div class="logo-svg-wrap">
+                        <svg viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <text x="170" y="48" font-family="'Plus Jakarta Sans',sans-serif" font-weight="700" font-size="34" fill="#d4b896" text-anchor="middle" letter-spacing="2">BRANDON'S</text>
+                            <text x="170" y="84" font-family="'Plus Jakarta Sans',sans-serif" font-weight="700" font-size="22" fill="#d4b896" text-anchor="middle" letter-spacing="1.5">COMPUTER REPAIR</text>
+                            <rect x="95" y="110" width="150" height="98" rx="8" stroke="#d4b896" stroke-width="3" fill="none"/>
+                            <rect x="103" y="117" width="134" height="78" rx="4" stroke="#d4b896" stroke-width="1.5" fill="none"/>
+                            <path d="M75 210 Q75 218 85 218 H255 Q265 218 265 210 L258 208 H82 Z" stroke="#d4b896" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                            <rect x="152" y="211" width="36" height="5" rx="2" stroke="#d4b896" stroke-width="1.5" fill="none"/>
+                            <g transform="translate(170,156)" stroke="#d4b896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                <line x1="-4" y1="4" x2="18" y2="-22"/>
+                                <circle cx="-9" cy="10" r="11"/>
+                                <line x1="-3" y1="3" x2="-15" y2="17"/>
+                                <circle cx="21" cy="-25" r="6"/>
+                            </g>
+                            <text x="170" y="244" font-family="'Plus Jakarta Sans',sans-serif" font-weight="400" font-size="13" fill="#d4b896" text-anchor="middle" letter-spacing="0.5">Tech Support You Can Trust</text>
+                            <line x1="110" y1="255" x2="230" y2="255" stroke="#d4b896" stroke-width="0.8" opacity="0.4"/>
+                            <text x="170" y="275" font-family="'Plus Jakarta Sans',sans-serif" font-style="italic" font-weight="300" font-size="12" fill="#c8a87a" text-anchor="middle" letter-spacing="0.3">Rooted in Faith, Built on Integrity.</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info fade-up">
+                    <p class="section-label">Get In Touch</p>
+                    <h2>Ready to get your computer fixed?</h2>
+                    <p>Give me a call or send me an email to schedule your drop-off. I'm happy to help.</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+                        <div><h4>Phone</h4><p><a href="tel:+12058554802">(205) 855-4802</a></p></div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                        <div><h4>Email</h4><p><a href="mailto:Bcr3pair@gmail.com">Bcr3pair@gmail.com</a></p></div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div><h4>Location</h4><p>Springville, Alabama</p></div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <div><h4>Hours</h4><p>Mon – Fri: 9:00 AM – 4:00 PM</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Brandon's Computer Repair</h3>
+                    <p>Professional computer repair in Springville, Alabama. Honest work, fair prices, fast turnaround. Rooted in Faith, Built on Integrity.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+12058554802">(205) 855-4802</a></li>
+                        <li><a href="mailto:Bcr3pair@gmail.com">Bcr3pair@gmail.com</a></li>
+                        <li>Springville, AL</li>
+                        <li>Mon–Fri: 9 AM – 4 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Brandon's Computer Repair. All rights reserved.</span>
+                <span>Springville, Alabama</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', scrollY > 10));
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if(t) window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 80, behavior:'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
